@@ -1,6 +1,10 @@
 package parser;
 
+import classes.FileSetsController;
+import classes.MengeControllerIF;
+
 public abstract class TreeNode {
+	FileSetsController fileSetsController;
 	TreeNode left;
 	TreeNode right;
 
@@ -9,5 +13,5 @@ public abstract class TreeNode {
 		right = b;
 	}
 	public abstract String toString();
-	public abstract Menge eval();
+	public abstract MengeControllerIF eval();
 }

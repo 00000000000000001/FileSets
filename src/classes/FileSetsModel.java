@@ -9,8 +9,8 @@ public class FileSetsModel extends AbstractPublisher{
 	// ID => MengeControllerIF
 	private Map<Integer, MengeControllerIF> mengen = new HashMap<>();
 	public static final String OPERATION_UNION = "union";
-	public static final String OPERATION_DIFFERENCE = "difference";
-	public static final String OPERATION_INTERSECTION = "intersection";
+	public static final String OPERATION_SUBTRACT = "subtract";
+	public static final String OPERATION_INTERSECT = "intersect";
 	
 	@Override
 	public String toString() {
@@ -51,10 +51,10 @@ public class FileSetsModel extends AbstractPublisher{
 		return OPERATION_UNION;
 	}
 	public static String getOperationDifference() {
-		return OPERATION_DIFFERENCE;
+		return OPERATION_SUBTRACT;
 	}
 	public static String getOperationIntersection() {
-		return OPERATION_INTERSECTION;
+		return OPERATION_INTERSECT;
 	}
 	
 	

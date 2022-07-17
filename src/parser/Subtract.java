@@ -1,5 +1,8 @@
 package parser;
 
+import classes.FileSetsForm;
+import classes.MengeControllerIF;
+
 public class Subtract extends TreeNode {
 	
 	public Subtract(TreeNode a, TreeNode b) {
@@ -13,8 +16,7 @@ public class Subtract extends TreeNode {
 	}
 
 	@Override
-	public Menge eval() {
-		// TODO Auto-generated method stub
-		return null;
+	public MengeControllerIF eval() {
+		return FileSetsForm.fileSetsController.operation(left.eval(), right.eval(), "subtract");
 	}
 }

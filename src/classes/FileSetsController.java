@@ -80,7 +80,7 @@ public class FileSetsController implements FileSetsControllerIF{
 				    res.add(key, file);
 				}
 				return res;
-			case FileSetsModel.OPERATION_DIFFERENCE:
+			case FileSetsModel.OPERATION_SUBTRACT:
 				res = new MengeController(this.getFileSetsView());
 				for (Map.Entry<String, String> entry : menge_A.getMengeModel().getDict().entrySet()) {
 				    String key = entry.getKey();
@@ -90,7 +90,7 @@ public class FileSetsController implements FileSetsControllerIF{
 				    }
 				}
 				return res;
-			case FileSetsModel.OPERATION_INTERSECTION:
+			case FileSetsModel.OPERATION_INTERSECT:
 				res = new MengeController(this.getFileSetsView());
 				for (Map.Entry<String, String> entry : menge_A.getMengeModel().getDict().entrySet()) {
 				    String hash = entry.getKey();
@@ -120,6 +120,17 @@ public class FileSetsController implements FileSetsControllerIF{
 
 	public void setFileSetsView(FileSetsView fileSetsView) {
 		this.fileSetsView = fileSetsView;
+	}
+
+	@Override
+	public MengeControllerIF get(String name) {
+		// TODO returns set according to given name
+		for (MengeControllerIF mengeController : this.fileSetsModel.getMengen().values()) {
+		    if (mengeController.getMengeModel().getName().equals(name)) {
+		    	return mengeController;
+		    }
+		}
+		return null;
 	}
 
 }

@@ -1,5 +1,8 @@
 package parser;
 
+import classes.FileSetsForm;
+import classes.MengeControllerIF;
+
 public class ID extends TreeNode {
 	String name;
 
@@ -19,8 +22,8 @@ public class ID extends TreeNode {
 	}
 
 	@Override
-	public Menge eval() {
+	public MengeControllerIF eval() {
 		// TODO Auto-generated method stub
-		return null;
+		return FileSetsForm.fileSetsController.get(name);
 	}
 }

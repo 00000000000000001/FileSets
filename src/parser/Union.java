@@ -1,5 +1,8 @@
 package parser;
 
+import classes.FileSetsForm;
+import classes.MengeControllerIF;
+
 public class Union extends TreeNode {
 	
 
@@ -14,9 +17,7 @@ public class Union extends TreeNode {
 	}
 
 	@Override
-	public Menge eval() {
-		// TODO Auto-generated method stub
-//		FileSets.operation(left.eval(), right.eval(), "union");
-		return null;
+	public MengeControllerIF eval() {
+		return FileSetsForm.fileSetsController.operation(left.eval(), right.eval(), "union");
 	}
 }

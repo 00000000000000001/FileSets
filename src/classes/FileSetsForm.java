@@ -24,7 +24,7 @@ import parser.Parser;
 
 public class FileSetsForm extends JFrame {
 	private static final long serialVersionUID = 1L;
-	FileSetsControllerIF fileSetsController = new FileSetsController();
+	public static FileSetsControllerIF fileSetsController;
 	JButton bOpen = new JButton("open");
 	JButton bCalc = new JButton("calc");
 	JButton bExport = new JButton("export");
@@ -70,7 +70,7 @@ public class FileSetsForm extends JFrame {
 		    	Parser parser = new Parser(tfExpression.getText());
 		    	parser.scanToken();
 				parser.resultTree = parser.parseS();
-				lErgebnis.setText(parser.resultTree.toString());
+				lErgebnis.setText(parser.resultTree.eval().toString());
 		    	System.out.println(parser.resultTree.toString());
 		    }
 
@@ -97,6 +97,8 @@ public class FileSetsForm extends JFrame {
 		spMengen.setPreferredSize(new Dimension(50, 200));
 		spMenge.setPreferredSize(new Dimension(500, 200));
 		spErgebnis.setPreferredSize(new Dimension(200, 200));
+		
+		fileSetsController = new FileSetsController();
 		
 		// Create new JFrame with title "FileSets"
 		this.setTitle("FileSets");

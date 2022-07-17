@@ -12,4 +12,6 @@ public interface FileSetsControllerIF {
 	
 	public FileSetsView getFileSetsView();
 
+	public MengeControllerIF get(String name);
+
 }
