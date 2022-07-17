@@ -60,14 +60,14 @@ class FileSetsTest {
 	}
 	
 	@Test
-	void apply_intersection_operation_to_file_sets() throws NoSuchAlgorithmException, IOException {
+	void apply_intersect_operation_to_file_sets() throws NoSuchAlgorithmException, IOException {
 		// Menge A
 		MengeControllerIF menge_A = fileSetsController.create("./Test");
 		menge_A.add("./file_0_Kopie");
 		// Menge B
 		MengeControllerIF menge_B = fileSetsController.create("./file_0");
 		// A & B
-		MengeControllerIF menge_C = fileSetsController.operation(menge_A, menge_B, "intersection");
+		MengeControllerIF menge_C = fileSetsController.operation(menge_A, menge_B, FileSetsModel.OPERATION_INTERSECT);
 		
 		String hash4 = "dcdf045fad6698a036cb97071796f6f2".toUpperCase();
 		String expected = "{"
@@ -79,14 +79,14 @@ class FileSetsTest {
 	}
 	
 	@Test
-	void apply_difference_operation_to_file_sets() throws NoSuchAlgorithmException, IOException {
+	void apply_subtract_operation_to_file_sets() throws NoSuchAlgorithmException, IOException {
 		// Menge A
 		MengeControllerIF menge_A = fileSetsController.create("./Test");
 		menge_A.add("./file_0_Kopie");
 		// Menge B
 		MengeControllerIF menge_B = fileSetsController.create("./file_0");
 		// A & B
-		MengeControllerIF menge_C = fileSetsController.operation(menge_A, menge_B, "difference");
+		MengeControllerIF menge_C = fileSetsController.operation(menge_A, menge_B, FileSetsModel.OPERATION_SUBTRACT);
 
 		String hash1 = "52923b476602bdcb6506a6266637fc61".toUpperCase();
 		String hash2 = "81c4e909473316aa7c01cb25e6fbf1ca".toUpperCase();
