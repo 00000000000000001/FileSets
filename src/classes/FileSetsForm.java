@@ -71,7 +71,7 @@ public class FileSetsForm extends JFrame {
 		    	parser.scanToken();
 				parser.resultTree = parser.parseS();
 				lErgebnis.setText(parser.resultTree.eval().toString());
-		    	System.out.println(parser.resultTree.toString());
+		    	System.out.println("eval: " + parser.resultTree.toString());
 		    }
 
 
