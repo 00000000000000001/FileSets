@@ -15,9 +15,11 @@ public class MengeModel extends AbstractPublisher{
 		    String key = entry.getKey();
 		    Object value = entry.getValue();
 		    items.append("(" + key + ", " + value + "),");
+		    items.append('\n');
 		}
-		// Letztes Komma entfernen, falls items nicht leer ist
+		// Letztes Komma und letzten Zeilenumbruch entfernen, falls items nicht leer ist
 		if (items.length() > 0) {
+			items.deleteCharAt(items.length() - 1);
 			items.deleteCharAt(items.length() - 1);
 		}
 		return "{" + items + "}";

@@ -49,9 +49,9 @@ class FileSetsTest {
 		String hash3 = "43a3ebb60b443b6768b665e5ee56595e".toUpperCase();
 		String hash4 = "dcdf045fad6698a036cb97071796f6f2".toUpperCase();
 		String expected = "{"
-				+ "(" + hash2 + ", " + rootDir + "/Test/file_2),"
-				+ "(" + hash4 + ", " + rootDir + "/file_0),"
-				+ "(" + hash1 + ", " + rootDir + "/Test/file_1),"
+				+ "(" + hash2 + ", " + rootDir + "/Test/file_2),\n"
+				+ "(" + hash4 + ", " + rootDir + "/file_0),\n"
+				+ "(" + hash1 + ", " + rootDir + "/Test/file_1),\n"
 				+ "(" + hash3 + ", " + rootDir + "/Test/Subfolder/file_3)"
 				+ "}";
 		
@@ -92,8 +92,8 @@ class FileSetsTest {
 		String hash2 = "81c4e909473316aa7c01cb25e6fbf1ca".toUpperCase();
 		String hash3 = "43a3ebb60b443b6768b665e5ee56595e".toUpperCase();
 		String expected = "{"
-				+ "(" + hash2 + ", " + rootDir + "/Test/file_2),"
-				+ "(" + hash1 + ", " + rootDir + "/Test/file_1),"
+				+ "(" + hash2 + ", " + rootDir + "/Test/file_2),\n"
+				+ "(" + hash1 + ", " + rootDir + "/Test/file_1),\n"
 				+ "(" + hash3 + ", " + rootDir + "/Test/Subfolder/file_3)"
 				+ "}";
 		
