@@ -49,10 +49,10 @@ class FileSetsTest {
 		String hash3 = "43a3ebb60b443b6768b665e5ee56595e".toUpperCase();
 		String hash4 = "dcdf045fad6698a036cb97071796f6f2".toUpperCase();
 		String expected = "{"
-				+ "(" + hash2 + ", /Users/jonasmager/eclipse-workspace/FileSets/Test/file_2),"
-				+ "(" + hash4 + ", /Users/jonasmager/eclipse-workspace/FileSets/file_0),"
-				+ "(" + hash1 + ", /Users/jonasmager/eclipse-workspace/FileSets/Test/file_1),"
-				+ "(" + hash3 + ", /Users/jonasmager/eclipse-workspace/FileSets/Test/Subfolder/file_3)"
+				+ "(" + hash2 + ", " + rootDir + "/Test/file_2),"
+				+ "(" + hash4 + ", " + rootDir + "/file_0),"
+				+ "(" + hash1 + ", " + rootDir + "/Test/file_1),"
+				+ "(" + hash3 + ", " + rootDir + "/Test/Subfolder/file_3)"
 				+ "}";
 		
 		
@@ -71,7 +71,7 @@ class FileSetsTest {
 		
 		String hash4 = "dcdf045fad6698a036cb97071796f6f2".toUpperCase();
 		String expected = "{"
-				+ "(" + hash4 + ", /Users/jonasmager/eclipse-workspace/FileSets/file_0_Kopie)"
+				+ "(" + hash4 + ", " + rootDir + "/file_0_Kopie)"
 				+ "}";
 		
 		
@@ -92,9 +92,9 @@ class FileSetsTest {
 		String hash2 = "81c4e909473316aa7c01cb25e6fbf1ca".toUpperCase();
 		String hash3 = "43a3ebb60b443b6768b665e5ee56595e".toUpperCase();
 		String expected = "{"
-				+ "(" + hash2 + ", /Users/jonasmager/eclipse-workspace/FileSets/Test/file_2),"
-				+ "(" + hash1 + ", /Users/jonasmager/eclipse-workspace/FileSets/Test/file_1),"
-				+ "(" + hash3 + ", /Users/jonasmager/eclipse-workspace/FileSets/Test/Subfolder/file_3)"
+				+ "(" + hash2 + ", " + rootDir + "/Test/file_2),"
+				+ "(" + hash1 + ", " + rootDir + "/Test/file_1),"
+				+ "(" + hash3 + ", " + rootDir + "/Test/Subfolder/file_3)"
 				+ "}";
 		
 		

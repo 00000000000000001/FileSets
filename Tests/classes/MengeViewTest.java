@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 
 class MengeViewTest {
 	FileSetsControllerIF fileSetsController;
+	String rootDir = MengeController.PATH_SELF;
 
 	@BeforeEach
 	void setUp() throws Exception {
@@ -33,8 +34,7 @@ class MengeViewTest {
 	void view_two_new_empty_sets() throws NoSuchAlgorithmException, IOException {
 		fileSetsController.create();
 		fileSetsController.create();
-		String expected = "{}\n"
-				+ "{}";
+		String expected = "{}\n";
 		assertEquals(expected, fileSetsController.getFileSetsView().toString());
 	}
 	
@@ -42,8 +42,8 @@ class MengeViewTest {
 	void view_new_set_from_file() throws NoSuchAlgorithmException, IOException {
 		fileSetsController.create("./file_0");
 		String hash = "dcdf045fad6698a036cb97071796f6f2".toUpperCase();
-		String expected = "{(" + hash + ", /Users/jonasmager/eclipse-workspace/FileSets/file_0)}";
-		assertEquals(expected, fileSetsController.getFileSetsView().toString());
+		String expected = "{(" + hash + ", " + rootDir + "/file_0)}";
+		assertEquals(expected, fileSetsController.getFileSetsView().view.toString());
 	}
 	
 	@Test
@@ -53,11 +53,11 @@ class MengeViewTest {
 		String hash2 = "81c4e909473316aa7c01cb25e6fbf1ca".toUpperCase();
 		String hash3 = "43a3ebb60b443b6768b665e5ee56595e".toUpperCase();
 		String expected = "{"
-				+ "(" + hash2 + ", /Users/jonasmager/eclipse-workspace/FileSets/Test/file_2),"
-				+ "(" + hash1 + ", /Users/jonasmager/eclipse-workspace/FileSets/Test/file_1),"
-				+ "(" + hash3 + ", /Users/jonasmager/eclipse-workspace/FileSets/Test/Subfolder/file_3)"
+				+ "(" + hash2 + ", " + rootDir + "/Test/file_2),"
+				+ "(" + hash1 + ", " + rootDir + "/Test/file_1),"
+				+ "(" + hash3 + ", " + rootDir + "/Test/Subfolder/file_3)"
 				+ "}";
-		assertEquals(expected, fileSetsController.getFileSetsView().toString());
+		assertEquals(expected, fileSetsController.getFileSetsView().view.toString());
 	}
 
 }
