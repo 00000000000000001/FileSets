@@ -10,6 +10,10 @@ public class FileSetsView extends View{
 			view.append(mengeController.getMengeModel().getName());
 			view.append('\n');
 		}
+		// remove last line break
+		if (view.length() > 0) {
+			view.deleteCharAt(view.length() - 1);
+		}
 		FileSetsForm.lMengen.setText(view.toString());
 
 	}

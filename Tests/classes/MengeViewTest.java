@@ -26,7 +26,7 @@ class MengeViewTest {
 	@Test
 	void view_new_empty_set() throws NoSuchAlgorithmException, IOException {
 		fileSetsController.create();
-		String expected = "{}";
+		String expected = "A";
 		assertEquals(expected, fileSetsController.getFileSetsView().toString());
 	}
 	
@@ -34,7 +34,7 @@ class MengeViewTest {
 	void view_two_new_empty_sets() throws NoSuchAlgorithmException, IOException {
 		fileSetsController.create();
 		fileSetsController.create();
-		String expected = "{}\n";
+		String expected = "A\nB";
 		assertEquals(expected, fileSetsController.getFileSetsView().toString());
 	}
 	
@@ -42,7 +42,7 @@ class MengeViewTest {
 	void view_new_set_from_file() throws NoSuchAlgorithmException, IOException {
 		fileSetsController.create("./file_0");
 		String hash = "dcdf045fad6698a036cb97071796f6f2".toUpperCase();
-		String expected = "{(" + hash + ", " + rootDir + "/file_0)}";
+		String expected = "A";
 		assertEquals(expected, fileSetsController.getFileSetsView().view.toString());
 	}
 	
@@ -52,11 +52,7 @@ class MengeViewTest {
 		String hash1 = "52923b476602bdcb6506a6266637fc61".toUpperCase();
 		String hash2 = "81c4e909473316aa7c01cb25e6fbf1ca".toUpperCase();
 		String hash3 = "43a3ebb60b443b6768b665e5ee56595e".toUpperCase();
-		String expected = "{"
-				+ "(" + hash2 + ", " + rootDir + "/Test/file_2),"
-				+ "(" + hash1 + ", " + rootDir + "/Test/file_1),"
-				+ "(" + hash3 + ", " + rootDir + "/Test/Subfolder/file_3)"
-				+ "}";
+		String expected = "A";
 		assertEquals(expected, fileSetsController.getFileSetsView().view.toString());
 	}
 
