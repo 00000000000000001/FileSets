@@ -96,7 +96,7 @@ public class FileSetsForm extends JFrame {
 		
 		spMengen.setPreferredSize(new Dimension(50, 200));
 		spMenge.setPreferredSize(new Dimension(500, 200));
-		spErgebnis.setPreferredSize(new Dimension(200, 200));
+		spErgebnis.setPreferredSize(new Dimension(500, 200));
 		
 		fileSetsController = new FileSetsController();
 		
@@ -110,7 +110,7 @@ public class FileSetsForm extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         /* Wir setzen die Breite und die Höhe 
         unseres Fensters auf 200 Pixel */        
-		this.setSize(1200,300);
+		this.setSize(1200,500);
      	// Wir lassen unseren Frame anzeigen
 		this.setVisible(true);
 		
