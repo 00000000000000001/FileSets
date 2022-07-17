@@ -20,16 +20,21 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
+import parser.Parser;
+
 public class FileSetsForm extends JFrame {
 	private static final long serialVersionUID = 1L;
 	FileSetsControllerIF fileSetsController = new FileSetsController();
 	JButton bOpen = new JButton("open");
 	JButton bCalc = new JButton("calc");
+	JButton bExport = new JButton("export");
 	public static JTextArea lMengen = new JTextArea();
 	public static JTextArea lMenge = new JTextArea();
+	public static JTextArea lErgebnis = new JTextArea();
 	JScrollPane spMengen = new JScrollPane(lMengen);
 	JScrollPane spMenge = new JScrollPane(lMenge);
-	JTextField tfExpression = new JTextField("A + B", 15);
+	JScrollPane spErgebnis = new JScrollPane(lErgebnis);
+	static JTextField tfExpression = new JTextField("A + B", 15);
 	
 	public FileSetsForm() throws HeadlessException {
 		super();
@@ -55,6 +60,22 @@ public class FileSetsForm extends JFrame {
 
 		});
 		
+		// TODO Config calc button
+		bCalc.addActionListener(new ActionListener() {
+
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		        // TODO Syntactic check of the expression 
+		    	Parser parser = new Parser(tfExpression.getText());
+		    	parser.scanToken();
+				parser.resultTree = parser.parseS();
+				lErgebnis.setText(parser.resultTree.toString());
+		    	System.out.println(parser.resultTree.toString());
+		    }
+
+
+		});
+		
 		JPanel panel = new JPanel();
 		panel.setLayout(new FlowLayout());
 		// open button
@@ -67,9 +88,14 @@ public class FileSetsForm extends JFrame {
 		panel.add(tfExpression);
 		// Add calcbutton to form
 		panel.add(bCalc);
+		// Textarea zum anzeigen der Ergebnismenge
+		panel.add(spErgebnis);
+		// open button
+		panel.add(bExport);
 		
-		spMengen.setPreferredSize(new Dimension(200, 200));
-		spMenge.setPreferredSize(new Dimension(200, 200));
+		spMengen.setPreferredSize(new Dimension(50, 200));
+		spMenge.setPreferredSize(new Dimension(500, 200));
+		spErgebnis.setPreferredSize(new Dimension(200, 200));
 		
 		// Create new JFrame with title "FileSets"
 		this.setTitle("FileSets");
@@ -81,7 +107,7 @@ public class FileSetsForm extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         /* Wir setzen die Breite und die Höhe 
         unseres Fensters auf 200 Pixel */        
-		this.setSize(500,500);
+		this.setSize(1200,300);
      	// Wir lassen unseren Frame anzeigen
 		this.setVisible(true);
 		
