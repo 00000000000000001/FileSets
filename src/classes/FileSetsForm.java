@@ -1,6 +1,7 @@
 package classes;
 
-import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,15 +15,21 @@ import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
 public class FileSetsForm extends JFrame {
 	private static final long serialVersionUID = 1L;
+	FileSetsControllerIF fileSetsController = new FileSetsController();
 	JButton bOpen = new JButton("open");
+	JButton bCalc = new JButton("calc");
 	public static JTextArea lMengen = new JTextArea();
 	public static JTextArea lMenge = new JTextArea();
-	FileSetsControllerIF fileSetsController = new FileSetsController();
+	JScrollPane spMengen = new JScrollPane(lMengen);
+	JScrollPane spMenge = new JScrollPane(lMenge);
+	JTextField tfExpression = new JTextField("A + B", 15);
 	
 	public FileSetsForm() throws HeadlessException {
 		super();
@@ -49,13 +56,20 @@ public class FileSetsForm extends JFrame {
 		});
 		
 		JPanel panel = new JPanel();
-		panel.setLayout(new BorderLayout());
+		panel.setLayout(new FlowLayout());
 		// open button
-		panel.add(bOpen, BorderLayout.PAGE_START);
+		panel.add(bOpen);
 		// Mengen View
-		panel.add(lMengen, BorderLayout.LINE_START);
-		// TODO Menge View
-		panel.add(lMenge, BorderLayout.CENTER);
+		panel.add(spMengen);
+		// Menge View
+		panel.add(spMenge);
+		// Textfield for expression
+		panel.add(tfExpression);
+		// Add calcbutton to form
+		panel.add(bCalc);
+		
+		spMengen.setPreferredSize(new Dimension(200, 200));
+		spMenge.setPreferredSize(new Dimension(200, 200));
 		
 		// Create new JFrame with title "FileSets"
 		this.setTitle("FileSets");
@@ -67,7 +81,7 @@ public class FileSetsForm extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         /* Wir setzen die Breite und die Höhe 
         unseres Fensters auf 200 Pixel */        
-		this.setSize(300,200);
+		this.setSize(500,500);
      	// Wir lassen unseren Frame anzeigen
 		this.setVisible(true);
 		
