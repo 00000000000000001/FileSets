@@ -14,7 +14,7 @@ public class MengeController implements MengeControllerIF{
 	private MengeModel mengeModel = new MengeModel();
 	private MengeView mengeView = new MengeView();
 	private MD5 md5 = new MD5();
-	private final static String PATH_SELF = System.getProperty("user.dir");
+	public final static String PATH_SELF = System.getProperty("user.dir");
 	
 	public MengeController() {
 		super();

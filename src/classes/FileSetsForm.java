@@ -66,6 +66,7 @@ public class FileSetsForm extends JFrame {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
 		        // TODO Syntactic check of the expression 
+		    	// TODO Get eval of the parser running
 		    	Parser parser = new Parser(tfExpression.getText());
 		    	parser.scanToken();
 				parser.resultTree = parser.parseS();
