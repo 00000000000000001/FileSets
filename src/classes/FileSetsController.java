@@ -78,13 +78,7 @@ public class FileSetsController implements FileSetsControllerIF{
 				return res;
 			case FileSetsModel.OPERATION_INTERSECT:
 				res = new MengeController(this.getFileSetsView());
-				for (Map.Entry<String, String> entry : menge_A.getMengeModel().getDict().entrySet()) {
-				    String hash = entry.getKey();
-				    String file = entry.getValue();
-				    if (menge_B.contains(hash)) {
-				    	res.add(hash, file);
-				    }
-				}
+				menge_A.getMengeModel().getDict().entrySet().stream().filter(x -> menge_B.contains(x.getKey())).forEach(x -> res.add(x.getKey(), x.getValue()));
 				return res;
 			default:
 				System.out.println("unknown operation: " + operation);
