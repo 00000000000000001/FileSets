@@ -52,13 +52,14 @@ public class MengeController implements MengeControllerIF{
 		Path path = Paths.get(name);
 		if (Files.exists(path)) {
 			// Check if file already exists
-			if (!contains(md5.file(name))) {
+			String hash = md5.file(name);
+			if (!contains(hash)) {
 				// convert relative path to absolute path
 				if (name.charAt(0) == '.') {
 					name = name.replaceFirst("(.)", PATH_SELF);
 				}
 				// add to dict
-				dict.put(md5.file(name), name);
+				dict.put(hash, name);
 				// finally set new dict
 				mengeModel.setDict(dict);
 			}
