@@ -69,16 +69,8 @@ public class FileSetsController implements FileSetsControllerIF{
 		switch(operation) {
 			case FileSetsModel.OPERATION_UNION:
 				res = new MengeController(this.getFileSetsView());
-				for (Map.Entry<String, String> entry : menge_A.getMengeModel().getDict().entrySet()) {
-				    String hash = entry.getKey();
-				    String file = entry.getValue();
-				    res.add(hash, file);
-				}
-				for (Map.Entry<String, String> entry : menge_B.getMengeModel().getDict().entrySet()) {
-				    String key = entry.getKey();
-				    String file = entry.getValue();
-				    res.add(key, file);
-				}
+				menge_A.getMengeModel().getDict().entrySet().stream().forEach(x -> res.add(x.getKey(), x.getValue()));
+				menge_B.getMengeModel().getDict().entrySet().stream().forEach(x -> res.add(x.getKey(), x.getValue()));
 				return res;
 			case FileSetsModel.OPERATION_SUBTRACT:
 				res = new MengeController(this.getFileSetsView());

@@ -2,8 +2,6 @@ package parser;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
-import classes.FileSetsController;
-
 public class Parser {
 	String equation;
 	String nextToken;

@@ -34,7 +34,7 @@ public class FileSetsForm extends JFrame {
 	JScrollPane spMengen = new JScrollPane(lMengen);
 	JScrollPane spMenge = new JScrollPane(lMenge);
 	JScrollPane spErgebnis = new JScrollPane(lErgebnis);
-	static JTextField tfExpression = new JTextField("A + B", 15);
+	static JTextField tfExpression = new JTextField("A & B", 15);
 	
 	public FileSetsForm() throws HeadlessException {
 		super();
