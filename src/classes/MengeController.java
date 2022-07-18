@@ -100,6 +100,7 @@ public class MengeController implements MengeControllerIF{
             // We want to find only regular files
             result = walk.filter(Files::isRegularFile)
             		// We want to find only visible files
+            		// TODO add option here
             		.filter(x -> {
 				try {
 					return !Files.isHidden(x);

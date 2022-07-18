@@ -111,14 +111,14 @@ class FileSetsTest {
 	@Test
 	void get_set_by_false_name() throws NoSuchAlgorithmException, IOException {
 		// Menge A
-		MengeControllerIF menge_A = fileSetsController.create("./Test");		
+		fileSetsController.create("./Test");		
 		assertSame(null, fileSetsController.get("B"));
 	}
 	
 	@Test
 	void get_set_by_name_amongst_others() throws NoSuchAlgorithmException, IOException {
 		// Menge A
-		MengeControllerIF menge_A = fileSetsController.create("./Test");
+		fileSetsController.create("./Test");
 		// Menge B
 		MengeControllerIF menge_B = fileSetsController.create("./Test");
 		assertSame(menge_B, fileSetsController.get("B"));
