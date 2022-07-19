@@ -17,7 +17,7 @@ class SHA512Test {
 	}
 
 	@Test
-	void md5_hash_of_a_file() throws NoSuchAlgorithmException, IOException {
+	void hash_of_a_file() throws NoSuchAlgorithmException, IOException {
 		String filename = "./Test/file_1";
 		String expected = "3d22b3b0a63c0449ee902463451c6548409453f922f54824f7876e90f30e1c97e8006b44cceedebf79c62c3192c49b1894f67aa0283067c3e3dea18ee6dc889d".toUpperCase();
 		assertEquals(expected, hash.getSha512().file(filename));

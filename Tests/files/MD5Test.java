@@ -17,7 +17,7 @@ class MD5Test {
 	}
 
 	@Test
-	void md5_hash_of_a_file() throws NoSuchAlgorithmException, IOException {
+	void hash_of_a_file() throws NoSuchAlgorithmException, IOException {
 		String filename = "./Test/file_1";
 		String expected = "52923b476602bdcb6506a6266637fc61".toUpperCase();
 		assertEquals(expected, hash.getMd5().file(filename));

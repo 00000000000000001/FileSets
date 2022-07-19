@@ -17,7 +17,7 @@ class SHA256Test {
 	}
 
 	@Test
-	void md5_hash_of_a_file() throws NoSuchAlgorithmException, IOException {
+	void hash_of_a_file() throws NoSuchAlgorithmException, IOException {
 		String filename = "./Test/file_1";
 		String expected = "2b099725ffc1fbb920779295b9b39796ac058e2025340654031e471ea174b31a".toUpperCase();
 		assertEquals(expected, hash.getSha256().file(filename));
