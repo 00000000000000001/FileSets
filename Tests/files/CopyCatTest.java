@@ -1,4 +1,4 @@
-package classes;
+package files;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.IOException;
@@ -6,9 +6,6 @@ import java.security.NoSuchAlgorithmException;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import files.CopyCat;
-import files.CopyCatIF;
 
 class CopyCatTest {
 	CopyCatIF copyCat;

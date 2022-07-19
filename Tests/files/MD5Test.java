@@ -1,4 +1,4 @@
-package classes;
+package files;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -9,25 +9,25 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class MD5Test {
-	MD5IF md5;
-
+	HashIF hash;
+	
 	@BeforeEach
 	void setUp() throws Exception {
-		md5 = new MD5();
+		hash = new Hash();
 	}
 
 	@Test
 	void md5_hash_of_a_file() throws NoSuchAlgorithmException, IOException {
-		String filename = "/Users/jonasmager/eclipse-workspace/FileSets/Test/file_1";
+		String filename = "./Test/file_1";
 		String expected = "52923b476602bdcb6506a6266637fc61".toUpperCase();
-		assertEquals(expected, md5.file(filename));
+		assertEquals(expected, hash.getMd5().file(filename));
 	}
 	
 	@Test
 	void returns_null_when_file_nonexistent() throws NoSuchAlgorithmException, IOException {
-		String filename = "/Users/jonasmager/eclipse-workspace/FileSets/Test/file_fivemillion";
+		String filename = "./Test/file_fivemillion";
 		String expected = null;
-		assertEquals(expected, md5.file(filename));
+		assertEquals(expected, hash.getMd5().file(filename));
 	}
 
 }

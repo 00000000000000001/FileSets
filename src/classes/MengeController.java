@@ -10,6 +10,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import files.MD5;
+
 public class MengeController implements MengeControllerIF{
 	private MengeModel mengeModel = new MengeModel();
 	private MengeView mengeView = new MengeView();

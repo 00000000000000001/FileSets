@@ -1,4 +1,4 @@
-package classes;
+package files;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -8,7 +8,7 @@ import java.security.NoSuchAlgorithmException;
 
 import javax.xml.bind.DatatypeConverter;
 
-public class MD5 implements MD5IF {
+public class SHA512 implements SHA512IF {
 
 	@Override
 	public String file(String filename) throws NoSuchAlgorithmException, IOException {
@@ -16,7 +16,7 @@ public class MD5 implements MD5IF {
 		
 		if (Files.exists(Paths.get(filename))) {
 			
-			MessageDigest md = MessageDigest.getInstance("MD5");
+			MessageDigest md = MessageDigest.getInstance("SHA-512");
 			md.update(Files.readAllBytes(Paths.get(filename)));
 			byte[] digest = md.digest();
 			checksum = DatatypeConverter.printHexBinary(digest).toUpperCase();
