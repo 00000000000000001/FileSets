@@ -22,5 +22,12 @@ class MD5Test {
 		String expected = "52923b476602bdcb6506a6266637fc61".toUpperCase();
 		assertEquals(expected, md5.file(filename));
 	}
+	
+	@Test
+	void returns_null_when_file_nonexistent() throws NoSuchAlgorithmException, IOException {
+		String filename = "/Users/jonasmager/eclipse-workspace/FileSets/Test/file_fivemillion";
+		String expected = null;
+		assertEquals(expected, md5.file(filename));
+	}
 
 }

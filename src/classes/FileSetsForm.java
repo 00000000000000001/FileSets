@@ -20,11 +20,15 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
+import files.CopyCat;
+import files.CopyCatIF;
 import parser.Parser;
 
 public class FileSetsForm extends JFrame {
 	private static final long serialVersionUID = 1L;
 	public static FileSetsControllerIF fileSetsController;
+	MengeControllerIF mcErgebnis = new MengeController();
+	String exportPath = "./Export/";
 	JButton bOpen = new JButton("open");
 	JButton bCalc = new JButton("calc");
 	JButton bExport = new JButton("export");
@@ -66,12 +70,33 @@ public class FileSetsForm extends JFrame {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
 		        // TODO Syntactic check of the expression 
-		    	// TODO Get eval of the parser running
+		    	// Get eval of the parser running
 		    	Parser parser = new Parser(tfExpression.getText());
 		    	parser.scanToken();
 				parser.resultTree = parser.parseS();
-				lErgebnis.setText(parser.resultTree.eval().toString());
+				mcErgebnis = parser.resultTree.eval();
+				lErgebnis.setText(mcErgebnis.toString());
 		    	System.out.println("eval: " + parser.resultTree.toString());
+		    }
+
+
+		});
+		
+		// TODO Config calc button
+		bExport.addActionListener(new ActionListener() {
+
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		    	CopyCatIF copyCat = new CopyCat();
+		    	mcErgebnis.getMengeModel().getDict().values().stream().forEach(x -> {
+					try {
+						System.out.println("export: " + exportPath + x);
+						copyCat.cp(x, exportPath + x);
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				});
 		    }
 
 

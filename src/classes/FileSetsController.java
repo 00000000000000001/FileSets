@@ -104,7 +104,7 @@ public class FileSetsController implements FileSetsControllerIF{
 
 	@Override
 	public MengeControllerIF get(String name) {
-		// TODO returns set according to given name
+		// returns set according to given name
 		for (MengeControllerIF mengeController : this.fileSetsModel.getMengen().values()) {
 		    if (mengeController.getMengeModel().getName().equals(name)) {
 		    	return mengeController;
