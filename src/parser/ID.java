@@ -1,7 +1,7 @@
 package parser;
 
 import classes.FileSetsForm;
-import classes.MengeControllerIF;
+import classes.SetControllerIF;
 
 public class ID extends TreeNode {
 	String name;
@@ -22,7 +22,7 @@ public class ID extends TreeNode {
 	}
 
 	@Override
-	public MengeControllerIF eval() {
+	public SetControllerIF eval() {
 		// TODO Auto-generated method stub
 		return FileSetsForm.fileSetsController.get(name);
 	}

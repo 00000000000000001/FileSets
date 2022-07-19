@@ -1,15 +1,15 @@
 package classes;
 
-public class MengeView extends View{
+public class SetView extends View{
 
 	@Override
 	public void update() {
 		// TODO display set
 		view = new StringBuilder("");
-		view.append(((MengeModel) this.model).toString());
+		view.append(((SetModel) this.model).toString());
 
 		view = new StringBuilder("");
-		for (String val : ((MengeModel) model).getDict().values()) {
+		for (String val : ((SetModel) model).getDict().values()) {
 			view.append(val);
 			view.append('\n');
 		}

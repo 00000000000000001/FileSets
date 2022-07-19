@@ -7,7 +7,7 @@ public class FileSetsModel extends AbstractPublisher{
 	private char[] alphabet = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
 	private int maxID = -1;
 	// ID => MengeControllerIF
-	private Map<Integer, MengeControllerIF> mengen = new HashMap<>();
+	private Map<Integer, SetControllerIF> mengen = new HashMap<>();
 	public static final String OPERATION_UNION = "union";
 	public static final String OPERATION_SUBTRACT = "subtract";
 	public static final String OPERATION_INTERSECT = "intersect";
@@ -15,7 +15,7 @@ public class FileSetsModel extends AbstractPublisher{
 	@Override
 	public String toString() {
 		StringBuilder str = new StringBuilder("");
-		for (MengeControllerIF menge : getMengen().values()) {
+		for (SetControllerIF menge : getMengen().values()) {
 			str.append(menge.toString());
 			str.append('\n');
 		}
@@ -40,10 +40,10 @@ public class FileSetsModel extends AbstractPublisher{
 		this.maxID = maxID;
 		update();
 	}
-	public Map<Integer, MengeControllerIF> getMengen() {
+	public Map<Integer, SetControllerIF> getMengen() {
 		return mengen;
 	}
-	public void setMengen(Map<Integer, MengeControllerIF> mengen) {
+	public void setMengen(Map<Integer, SetControllerIF> mengen) {
 		this.mengen = mengen;
 		update();
 	}

@@ -6,7 +6,7 @@ public class FileSetsView extends View{
 	public void update() {
 		// display sets
 		view = new StringBuilder("");
-		for (MengeControllerIF mengeController : ((FileSetsModel) model).getMengen().values()) {
+		for (SetControllerIF mengeController : ((FileSetsModel) model).getMengen().values()) {
 			view.append(mengeController.getMengeModel().getName());
 			view.append('\n');
 		}

@@ -1,7 +1,7 @@
 package parser;
 
 import classes.FileSetsForm;
-import classes.MengeControllerIF;
+import classes.SetControllerIF;
 
 public class Intersect extends TreeNode {
 	
@@ -16,7 +16,7 @@ public class Intersect extends TreeNode {
 	}
 
 	@Override
-	public MengeControllerIF eval() {
+	public SetControllerIF eval() {
 		return FileSetsForm.fileSetsController.operation(left.eval(), right.eval(), "intersect");
 	}
 }

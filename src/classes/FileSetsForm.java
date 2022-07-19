@@ -27,8 +27,8 @@ import parser.Parser;
 public class FileSetsForm extends JFrame {
 	private static final long serialVersionUID = 1L;
 	public static FileSetsControllerIF fileSetsController;
-	MengeControllerIF mcErgebnis = new MengeController();
-	String exportPath = "./Export/";
+	SetControllerIF mcErgebnis = new SetController();
+	String exportPath = "./Export";
 	JButton bOpen = new JButton("open");
 	JButton bCalc = new JButton("calc");
 	JButton bExport = new JButton("export");
@@ -42,15 +42,15 @@ public class FileSetsForm extends JFrame {
 	
 	public FileSetsForm() throws HeadlessException {
 		super();
-		// open button opens a file or foldern dialog
+		// open button opens a file or folder dialog
 		bOpen.addActionListener(new ActionListener() {
 
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
 		        //your actions
 		    	SwingUtilities.invokeLater(() -> {
-					try {
-						oeffnen();
+					try {            
+			            fileSetsController.create(open());
 					} catch (NoSuchAlgorithmException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -82,7 +82,7 @@ public class FileSetsForm extends JFrame {
 
 		});
 		
-		// TODO Config calc button
+		// TODO Config export button
 		bExport.addActionListener(new ActionListener() {
 
 		    @Override
@@ -124,7 +124,7 @@ public class FileSetsForm extends JFrame {
 		spErgebnis.setPreferredSize(new Dimension(500, 200));
 		
 		fileSetsController = new FileSetsController();
-		
+
 		// Create new JFrame with title "FileSets"
 		this.setTitle("FileSets");
 		
@@ -142,7 +142,7 @@ public class FileSetsForm extends JFrame {
 	}
 	
 	
-	private void oeffnen() throws NoSuchAlgorithmException, IOException {
+	private String open() throws NoSuchAlgorithmException, IOException {
         final JFileChooser chooser = new JFileChooser("Verzeichnis wählen");
         chooser.setDialogType(JFileChooser.OPEN_DIALOG);
         chooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
@@ -168,11 +168,12 @@ public class FileSetsForm extends JFrame {
             String inputVerzStr = inputVerzFile.getPath();
             
             System.out.println("Eingabepfad:" + inputVerzStr);
-            
-            fileSetsController.create(inputVerzStr);
+
+            return inputVerzStr;
         }
         System.out.println("Fertig");
         chooser.setVisible(false);
+        return null;
     } 
 
 

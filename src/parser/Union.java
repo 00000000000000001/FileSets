@@ -1,7 +1,7 @@
 package parser;
 
 import classes.FileSetsForm;
-import classes.MengeControllerIF;
+import classes.SetControllerIF;
 
 public class Union extends TreeNode {
 	
@@ -17,7 +17,7 @@ public class Union extends TreeNode {
 	}
 
 	@Override
-	public MengeControllerIF eval() {
+	public SetControllerIF eval() {
 		return FileSetsForm.fileSetsController.operation(left.eval(), right.eval(), "union");
 	}
 }

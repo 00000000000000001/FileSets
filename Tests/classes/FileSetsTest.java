@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 
 class FileSetsTest {
 	FileSetsControllerIF fileSetsController;
-	String rootDir = MengeController.PATH_SELF;
+	String rootDir = SetController.PATH_SELF;
 
 	@BeforeEach
 	void setUp() throws Exception {
@@ -29,7 +29,7 @@ class FileSetsTest {
 	void created_set_has_unique_name() throws NoSuchAlgorithmException, IOException {
 		List<String> names = new LinkedList<>();
 		for (int i = 0; i < 1000; ++i) {
-			MengeModel mengeModel = fileSetsController.create().getMengeModel();
+			SetModel mengeModel = fileSetsController.create().getMengeModel();
 			assertFalse(names.contains(mengeModel.getName()));
 			names.add(mengeModel.getName());
 		}
@@ -38,11 +38,11 @@ class FileSetsTest {
 	@Test
 	void apply_union_operation_to_file_sets() throws NoSuchAlgorithmException, IOException {
 		// Menge A
-		MengeControllerIF menge_A = fileSetsController.create("./Test");
+		SetControllerIF menge_A = fileSetsController.create("./Test");
 		// Menge B
-		MengeControllerIF menge_B = fileSetsController.create("./file_0");
+		SetControllerIF menge_B = fileSetsController.create("./file_0");
 		// A & B
-		MengeControllerIF menge_C = fileSetsController.operation(menge_A, menge_B, "union");
+		SetControllerIF menge_C = fileSetsController.operation(menge_A, menge_B, "union");
 
 //		String md5_1 = "52923b476602bdcb6506a6266637fc61".toUpperCase();
 //		String md5_2 = "81c4e909473316aa7c01cb25e6fbf1ca".toUpperCase();
@@ -68,12 +68,12 @@ class FileSetsTest {
 	@Test
 	void apply_intersect_operation_to_file_sets() throws NoSuchAlgorithmException, IOException {
 		// Menge A
-		MengeControllerIF menge_A = fileSetsController.create("./Test");
+		SetControllerIF menge_A = fileSetsController.create("./Test");
 		menge_A.add("./file_0_Kopie");
 		// Menge B
-		MengeControllerIF menge_B = fileSetsController.create("./file_0");
+		SetControllerIF menge_B = fileSetsController.create("./file_0");
 		// A & B
-		MengeControllerIF menge_C = fileSetsController.operation(menge_A, menge_B, FileSetsModel.OPERATION_INTERSECT);
+		SetControllerIF menge_C = fileSetsController.operation(menge_A, menge_B, FileSetsModel.OPERATION_INTERSECT);
 		
 //		String md5_4 = "dcdf045fad6698a036cb97071796f6f2".toUpperCase();
 		String sha256_4 = "d414c5050a369ccc1369d9d05817e7c633e81280e24073e894232c50e04edce2".toUpperCase();
@@ -88,12 +88,12 @@ class FileSetsTest {
 	@Test
 	void apply_subtract_operation_to_file_sets() throws NoSuchAlgorithmException, IOException {
 		// Menge A
-		MengeControllerIF menge_A = fileSetsController.create("./Test");
+		SetControllerIF menge_A = fileSetsController.create("./Test");
 		menge_A.add("./file_0_Kopie");
 		// Menge B
-		MengeControllerIF menge_B = fileSetsController.create("./file_0");
+		SetControllerIF menge_B = fileSetsController.create("./file_0");
 		// A & B
-		MengeControllerIF menge_C = fileSetsController.operation(menge_A, menge_B, FileSetsModel.OPERATION_SUBTRACT);
+		SetControllerIF menge_C = fileSetsController.operation(menge_A, menge_B, FileSetsModel.OPERATION_SUBTRACT);
 
 //		String md5_1 = "52923b476602bdcb6506a6266637fc61".toUpperCase();
 //		String md5_2 = "81c4e909473316aa7c01cb25e6fbf1ca".toUpperCase();
@@ -116,7 +116,7 @@ class FileSetsTest {
 	@Test
 	void get_set_by_name() throws NoSuchAlgorithmException, IOException {
 		// Menge A
-		MengeControllerIF menge_A = fileSetsController.create("./Test");		
+		SetControllerIF menge_A = fileSetsController.create("./Test");		
 		assertSame(menge_A, fileSetsController.get("A"));
 	}
 	
@@ -132,7 +132,7 @@ class FileSetsTest {
 		// Menge A
 		fileSetsController.create("./Test");
 		// Menge B
-		MengeControllerIF menge_B = fileSetsController.create("./Test");
+		SetControllerIF menge_B = fileSetsController.create("./Test");
 		assertSame(menge_B, fileSetsController.get("B"));
 	}
 

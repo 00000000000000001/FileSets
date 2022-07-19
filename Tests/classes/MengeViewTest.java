@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 
 class MengeViewTest {
 	FileSetsControllerIF fileSetsController;
-	String rootDir = MengeController.PATH_SELF;
+	String rootDir = SetController.PATH_SELF;
 
 	@BeforeEach
 	void setUp() throws Exception {

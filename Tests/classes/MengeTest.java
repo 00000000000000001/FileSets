@@ -8,12 +8,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class MengeTest {
-	MengeControllerIF mengeController;
-	String rootDir = MengeController.PATH_SELF;
+	SetControllerIF mengeController;
+	String rootDir = SetController.PATH_SELF;
 
 	@BeforeEach
 	void setUp() throws Exception {
-		mengeController = new MengeController();
+		mengeController = new SetController();
 	}
 
 	@Test
@@ -24,7 +24,7 @@ class MengeTest {
 	
 	@Test
 	void add_a_file_to_constructor_relative() throws NoSuchAlgorithmException, IOException {
-		mengeController = new MengeController("./file_0");
+		mengeController = new SetController("./file_0");
 //		String md5_0 = "dcdf045fad6698a036cb97071796f6f2".toUpperCase();
 		String sha256_0 = "d414c5050a369ccc1369d9d05817e7c633e81280e24073e894232c50e04edce2".toUpperCase();
 		String expected = "{"
@@ -35,7 +35,7 @@ class MengeTest {
 	
 	@Test
 	void add_a_file_to_constructor_absolute() throws NoSuchAlgorithmException, IOException {
-		mengeController = new MengeController("/Users/jonasmager/eclipse-workspace/FileSets/file_0");
+		mengeController = new SetController("/Users/jonasmager/eclipse-workspace/FileSets/file_0");
 //		String md5_0 = "dcdf045fad6698a036cb97071796f6f2".toUpperCase();
 		String sha256_0 = "d414c5050a369ccc1369d9d05817e7c633e81280e24073e894232c50e04edce2".toUpperCase();
 		String expected = "{"
@@ -46,7 +46,7 @@ class MengeTest {
 	
 	@Test
 	void add_a_folder_to_constructor_relative() throws NoSuchAlgorithmException, IOException {
-		mengeController = new MengeController("./Test");
+		mengeController = new SetController("./Test");
 		String md5_1 = "2b099725ffc1fbb920779295b9b39796ac058e2025340654031e471ea174b31a".toUpperCase();
 		String md5_2 = "5fd8f044f2c644eb4eb7b423e622a7043335fa764999f0b2cf0b5da0df420562".toUpperCase();
 		String md5_3 = "1a012a4d58bed8cb3065d33cfe023280b72232972057f9f2e657d242b350ebd7".toUpperCase();
@@ -60,7 +60,7 @@ class MengeTest {
 	
 	@Test
 	void add_a_folder_to_constructor_absolute() throws NoSuchAlgorithmException, IOException {
-		mengeController = new MengeController(rootDir + "/Test");
+		mengeController = new SetController(rootDir + "/Test");
 		String md5_1 = "2b099725ffc1fbb920779295b9b39796ac058e2025340654031e471ea174b31a".toUpperCase();
 		String md5_2 = "5fd8f044f2c644eb4eb7b423e622a7043335fa764999f0b2cf0b5da0df420562".toUpperCase();
 		String md5_3 = "1a012a4d58bed8cb3065d33cfe023280b72232972057f9f2e657d242b350ebd7".toUpperCase();

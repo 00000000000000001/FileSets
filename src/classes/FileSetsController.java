@@ -19,11 +19,11 @@ public class FileSetsController implements FileSetsControllerIF{
 	}
 
 	@Override
-	public MengeControllerIF create() throws NoSuchAlgorithmException, IOException {
+	public SetControllerIF create() throws NoSuchAlgorithmException, IOException {
 		// neue Menge
-		MengeControllerIF menge = new MengeController(this.getFileSetsView());
+		SetControllerIF menge = new SetController(this.getFileSetsView());
 		// Liste der Mengen holen
-		Map<Integer, MengeControllerIF> mengen = fileSetsModel.getMengen();
+		Map<Integer, SetControllerIF> mengen = fileSetsModel.getMengen();
 		// id inkrementieren
 		fileSetsModel.setMaxID(fileSetsModel.getMaxID() + 1);
 		// Name der neuen Menge anpassen
@@ -57,27 +57,27 @@ public class FileSetsController implements FileSetsControllerIF{
 	}
 
 	@Override
-	public MengeControllerIF create(String filename) throws NoSuchAlgorithmException, IOException {
-		MengeControllerIF menge = create();
+	public SetControllerIF create(String filename) throws NoSuchAlgorithmException, IOException {
+		SetControllerIF menge = create();
 		menge.add(filename);
 		return menge;
 	}
 
 	@Override
-	public MengeControllerIF operation(MengeControllerIF menge_A, MengeControllerIF menge_B, String operation) {
-		MengeControllerIF res;
+	public SetControllerIF operation(SetControllerIF menge_A, SetControllerIF menge_B, String operation) {
+		SetControllerIF res;
 		switch(operation) {
 			case FileSetsModel.OPERATION_UNION:
-				res = new MengeController(this.getFileSetsView());
+				res = new SetController(this.getFileSetsView());
 				menge_A.getMengeModel().getDict().entrySet().stream().forEach(x -> res.add(x.getKey(), x.getValue()));
 				menge_B.getMengeModel().getDict().entrySet().stream().forEach(x -> res.add(x.getKey(), x.getValue()));
 				return res;
 			case FileSetsModel.OPERATION_SUBTRACT:
-				res = new MengeController(this.getFileSetsView());
+				res = new SetController(this.getFileSetsView());
 				menge_A.getMengeModel().getDict().entrySet().stream().filter(x -> !menge_B.contains(x.getKey())).forEach(x -> res.add(x.getKey(), x.getValue()));
 				return res;
 			case FileSetsModel.OPERATION_INTERSECT:
-				res = new MengeController(this.getFileSetsView());
+				res = new SetController(this.getFileSetsView());
 				menge_A.getMengeModel().getDict().entrySet().stream().filter(x -> menge_B.contains(x.getKey())).forEach(x -> res.add(x.getKey(), x.getValue()));
 				return res;
 			default:
@@ -103,9 +103,9 @@ public class FileSetsController implements FileSetsControllerIF{
 	}
 
 	@Override
-	public MengeControllerIF get(String name) {
+	public SetControllerIF get(String name) {
 		// returns set according to given name
-		for (MengeControllerIF mengeController : this.fileSetsModel.getMengen().values()) {
+		for (SetControllerIF mengeController : this.fileSetsModel.getMengen().values()) {
 		    if (mengeController.getMengeModel().getName().equals(name)) {
 		    	return mengeController;
 		    }

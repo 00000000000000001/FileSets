@@ -3,7 +3,7 @@ package classes;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MengeModel extends AbstractPublisher{
+public class SetModel extends AbstractPublisher{
 	private Map<String, String> dict = new HashMap<String, String>();
 	private String name = "";
 

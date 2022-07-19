@@ -14,13 +14,13 @@ import files.Hash;
 import files.HashIF;
 import files.MD5;
 
-public class MengeController implements MengeControllerIF{
-	private MengeModel mengeModel = new MengeModel();
-	private MengeView mengeView = new MengeView();
+public class SetController implements SetControllerIF{
+	private SetModel mengeModel = new SetModel();
+	private SetView mengeView = new SetView();
 	private HashIF hash = new Hash();
 	public final static String PATH_SELF = System.getProperty("user.dir");
 	
-	public MengeController() {
+	public SetController() {
 		super();
 		// MVC Initialisierung
 		mengeModel.addView(mengeView);
@@ -28,19 +28,19 @@ public class MengeController implements MengeControllerIF{
 		mengeView.subscribe(mengeModel);
 	}
 	
-	public MengeController(String filename) throws NoSuchAlgorithmException, IOException {
+	public SetController(String filename) throws NoSuchAlgorithmException, IOException {
 		this();
 		add(filename);
 	}
 	
-	public MengeController(FileSetsView fileSetsView) {
+	public SetController(FileSetsView fileSetsView) {
 		this();
 		// MVC Initialisierung
 		mengeModel.addView(fileSetsView);
 
 	}
 
-	public MengeController(String filename, FileSetsView fileSetsView) throws NoSuchAlgorithmException, IOException {
+	public SetController(String filename, FileSetsView fileSetsView) throws NoSuchAlgorithmException, IOException {
 		this(fileSetsView);
 		add(filename);
 	}
@@ -134,6 +134,13 @@ public class MengeController implements MengeControllerIF{
 			throw new IOException();
 		}
 	}
+	
+	@Override
+	public void add(String key, String value) {
+		Map<String, String> dict = mengeModel.getDict();
+		dict.put(key, value);
+		mengeModel.setDict(dict);
+	}
 
 	@Override
 	public String remove(String hash) {
@@ -143,15 +150,8 @@ public class MengeController implements MengeControllerIF{
 		return ret;
 	}
 
-	public MengeModel getMengeModel() {
+	public SetModel getMengeModel() {
 		return mengeModel;
-	}
-
-	@Override
-	public void add(String key, String value) {
-		Map<String, String> dict = mengeModel.getDict();
-		dict.put(key, value);
-		mengeModel.setDict(dict);
 	}
 
 	@Override
