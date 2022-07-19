@@ -9,14 +9,27 @@ import java.security.NoSuchAlgorithmException;
 import javax.xml.bind.DatatypeConverter;
 
 public class SHA256 implements SHA256IF {
-
+	private static SHA256 sha256;
+	MessageDigest md;
+	
+	private SHA256() throws NoSuchAlgorithmException {
+		super();
+		md = MessageDigest.getInstance("SHA-256");
+	}
+	
+	public static SHA256 getInstance() throws NoSuchAlgorithmException {
+		if (sha256 != null) {
+			return sha256;
+		} else {
+			return new SHA256();
+		}
+	}
+	
 	@Override
 	public String file(String filename) throws NoSuchAlgorithmException, IOException {
 		String checksum = null;
 		
 		if (Files.exists(Paths.get(filename))) {
-			
-			MessageDigest md = MessageDigest.getInstance("SHA-256");
 			md.update(Files.readAllBytes(Paths.get(filename)));
 			byte[] digest = md.digest();
 			checksum = DatatypeConverter.printHexBinary(digest).toUpperCase();

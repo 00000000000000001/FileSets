@@ -42,15 +42,17 @@ public class FileSetsForm extends JFrame {
 	
 	public FileSetsForm() throws HeadlessException {
 		super();
-		// open button opens a file or folder dialog
+		// open button opens a file or foldern dialog
 		bOpen.addActionListener(new ActionListener() {
 
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
 		        //your actions
 		    	SwingUtilities.invokeLater(() -> {
-					try {            
-			            fileSetsController.create(open());
+					try {
+						FileSetsControllerThread fileSetsControllerThread = new FileSetsControllerThread(FileSetsForm.fileSetsController, oeffnen());
+						Thread thread = new Thread(fileSetsControllerThread);
+						thread.start();
 					} catch (NoSuchAlgorithmException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -82,7 +84,7 @@ public class FileSetsForm extends JFrame {
 
 		});
 		
-		// TODO Config export button
+		// TODO Config calc button
 		bExport.addActionListener(new ActionListener() {
 
 		    @Override
@@ -124,7 +126,7 @@ public class FileSetsForm extends JFrame {
 		spErgebnis.setPreferredSize(new Dimension(500, 200));
 		
 		fileSetsController = new FileSetsController();
-
+		
 		// Create new JFrame with title "FileSets"
 		this.setTitle("FileSets");
 		
@@ -142,7 +144,7 @@ public class FileSetsForm extends JFrame {
 	}
 	
 	
-	private String open() throws NoSuchAlgorithmException, IOException {
+	private String oeffnen() throws NoSuchAlgorithmException, IOException {
         final JFileChooser chooser = new JFileChooser("Verzeichnis wählen");
         chooser.setDialogType(JFileChooser.OPEN_DIALOG);
         chooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
@@ -167,12 +169,11 @@ public class FileSetsForm extends JFrame {
             File inputVerzFile = chooser.getSelectedFile();
             String inputVerzStr = inputVerzFile.getPath();
             
-            System.out.println("Eingabepfad:" + inputVerzStr);
-
             return inputVerzStr;
         }
-        System.out.println("Fertig");
+        
         chooser.setVisible(false);
+        
         return null;
     } 
 

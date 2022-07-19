@@ -17,7 +17,7 @@ class CopyCatTest {
 
 	@Test
 	void copy_a_file() throws NoSuchAlgorithmException, IOException {
-		MD5 md5 = new MD5();
+		MD5 md5 = MD5.getInstance();
 		String dir = "./kopiert";
 		String file = "File_kopiert";
 		String target = dir + "/" + file;
@@ -32,7 +32,7 @@ class CopyCatTest {
 	
 	@Test
 	void remove_a_file() throws NoSuchAlgorithmException, IOException {
-		MD5 md5 = new MD5();
+		MD5 md5 = MD5.getInstance();
 		// Datei kopieren
 		copyCat.cp("./File", "./kopiert/File");
 		// kopierte Datei wieder löschen, damit der Test wiederholbar ist ;)
@@ -57,7 +57,7 @@ class CopyCatTest {
 	
 	@Test
 	void cp_returns_false_on_fail() throws NoSuchAlgorithmException, IOException {
-		MD5 md5 = new MD5();
+		MD5 md5 = MD5.getInstance();
 		// Datei kopieren
 		// assertion
 		assertEquals(false, copyCat.cp("./File_that_does_not_exist", "./kopiert/File"));

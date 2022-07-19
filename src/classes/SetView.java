@@ -13,8 +13,10 @@ public class SetView extends View{
 			view.append(val);
 			view.append('\n');
 		}
-		FileSetsForm.lMenge.setText(view.toString());
-		
+		// ether way is not threadsafe
+//		FileSetsForm.lMenge.setText(view.toString());
+		FileSetsForm.lMenge.setText(null);
+		FileSetsForm.lMenge.append(view.toString());
 	}
 
 }
