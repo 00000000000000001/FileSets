@@ -7,5 +7,4 @@ How it works:
 - operators are: + (union), & (intersect), - (subtract)
 - you can use round brackets as well
 - if you click the export button the files of your result set will be 
-exportet into 
-"Export" in the application directory
+exportet into "Export" in the application directory
