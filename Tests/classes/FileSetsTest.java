@@ -44,15 +44,21 @@ class FileSetsTest {
 		// A & B
 		MengeControllerIF menge_C = fileSetsController.operation(menge_A, menge_B, "union");
 
-		String hash1 = "52923b476602bdcb6506a6266637fc61".toUpperCase();
-		String hash2 = "81c4e909473316aa7c01cb25e6fbf1ca".toUpperCase();
-		String hash3 = "43a3ebb60b443b6768b665e5ee56595e".toUpperCase();
-		String hash4 = "dcdf045fad6698a036cb97071796f6f2".toUpperCase();
+//		String md5_1 = "52923b476602bdcb6506a6266637fc61".toUpperCase();
+//		String md5_2 = "81c4e909473316aa7c01cb25e6fbf1ca".toUpperCase();
+//		String md5_3 = "43a3ebb60b443b6768b665e5ee56595e".toUpperCase();
+//		String md5_4 = "dcdf045fad6698a036cb97071796f6f2".toUpperCase();
+		
+		String sha256_1 = "2b099725ffc1fbb920779295b9b39796ac058e2025340654031e471ea174b31a".toUpperCase();
+		String sha256_2 = "5fd8f044f2c644eb4eb7b423e622a7043335fa764999f0b2cf0b5da0df420562".toUpperCase();
+		String sha256_3 = "1a012a4d58bed8cb3065d33cfe023280b72232972057f9f2e657d242b350ebd7".toUpperCase();
+		String sha256_4 = "d414c5050a369ccc1369d9d05817e7c633e81280e24073e894232c50e04edce2".toUpperCase();
+		
 		String expected = "{"
-				+ "(" + hash2 + ", " + rootDir + "/Test/file_2),\n"
-				+ "(" + hash4 + ", " + rootDir + "/file_0),\n"
-				+ "(" + hash1 + ", " + rootDir + "/Test/file_1),\n"
-				+ "(" + hash3 + ", " + rootDir + "/Test/Subfolder/file_3)"
+				+ "(" + sha256_1 + ", " + rootDir + "/Test/file_1),\n"
+				+ "(" + sha256_2 + ", " + rootDir + "/Test/file_2),\n"
+				+ "(" + sha256_4 + ", " + rootDir + "/file_0),\n"
+				+ "(" + sha256_3 + ", " + rootDir + "/Test/Subfolder/file_3)"
 				+ "}";
 		
 		
@@ -69,9 +75,10 @@ class FileSetsTest {
 		// A & B
 		MengeControllerIF menge_C = fileSetsController.operation(menge_A, menge_B, FileSetsModel.OPERATION_INTERSECT);
 		
-		String hash4 = "dcdf045fad6698a036cb97071796f6f2".toUpperCase();
+//		String md5_4 = "dcdf045fad6698a036cb97071796f6f2".toUpperCase();
+		String sha256_4 = "d414c5050a369ccc1369d9d05817e7c633e81280e24073e894232c50e04edce2".toUpperCase();
 		String expected = "{"
-				+ "(" + hash4 + ", " + rootDir + "/file_0_Kopie)"
+				+ "(" + sha256_4 + ", " + rootDir + "/file_0_Kopie)"
 				+ "}";
 		
 		
@@ -88,13 +95,18 @@ class FileSetsTest {
 		// A & B
 		MengeControllerIF menge_C = fileSetsController.operation(menge_A, menge_B, FileSetsModel.OPERATION_SUBTRACT);
 
-		String hash1 = "52923b476602bdcb6506a6266637fc61".toUpperCase();
-		String hash2 = "81c4e909473316aa7c01cb25e6fbf1ca".toUpperCase();
-		String hash3 = "43a3ebb60b443b6768b665e5ee56595e".toUpperCase();
+//		String md5_1 = "52923b476602bdcb6506a6266637fc61".toUpperCase();
+//		String md5_2 = "81c4e909473316aa7c01cb25e6fbf1ca".toUpperCase();
+//		String md5_3 = "43a3ebb60b443b6768b665e5ee56595e".toUpperCase();
+		
+		String sha256_1 = "2b099725ffc1fbb920779295b9b39796ac058e2025340654031e471ea174b31a".toUpperCase();
+		String sha256_2 = "5fd8f044f2c644eb4eb7b423e622a7043335fa764999f0b2cf0b5da0df420562".toUpperCase();
+		String sha256_3 = "1a012a4d58bed8cb3065d33cfe023280b72232972057f9f2e657d242b350ebd7".toUpperCase();
+		
 		String expected = "{"
-				+ "(" + hash2 + ", " + rootDir + "/Test/file_2),\n"
-				+ "(" + hash1 + ", " + rootDir + "/Test/file_1),\n"
-				+ "(" + hash3 + ", " + rootDir + "/Test/Subfolder/file_3)"
+				+ "(" + sha256_1 + ", " + rootDir + "/Test/file_1),\n"
+				+ "(" + sha256_2 + ", " + rootDir + "/Test/file_2),\n"
+				+ "(" + sha256_3 + ", " + rootDir + "/Test/Subfolder/file_3)"
 				+ "}";
 		
 		

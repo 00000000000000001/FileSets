@@ -10,12 +10,14 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import files.Hash;
+import files.HashIF;
 import files.MD5;
 
 public class MengeController implements MengeControllerIF{
 	private MengeModel mengeModel = new MengeModel();
 	private MengeView mengeView = new MengeView();
-	private MD5 md5 = new MD5();
+	private HashIF hash = new Hash();
 	public final static String PATH_SELF = System.getProperty("user.dir");
 	
 	public MengeController() {
@@ -54,7 +56,7 @@ public class MengeController implements MengeControllerIF{
 		Path path = Paths.get(name);
 		if (Files.exists(path)) {
 			// Check if file already exists
-			String hash = md5.file(name);
+			String hash = this.hash.getSha256().file(name);
 			if (!contains(hash)) {
 				// convert relative path to absolute path
 				if (name.charAt(0) == '.') {
