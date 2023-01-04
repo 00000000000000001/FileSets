@@ -1,7 +1,7 @@
 package parser;
 
-import classes.FileSetsForm;
-import classes.SetControllerIF;
+import mvc.FileSetsController;
+import mvc.SetController;
 
 public class Subtract extends TreeNode {
 	
@@ -16,7 +16,7 @@ public class Subtract extends TreeNode {
 	}
 
 	@Override
-	public SetControllerIF eval() {
-		return FileSetsForm.fileSetsController.operation(left.eval(), right.eval(), "subtract");
+	public SetController eval() {
+		return FileSetsController.getInstance().operation(left.eval(), right.eval(), "subtract");
 	}
 }

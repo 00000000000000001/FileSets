@@ -8,6 +8,22 @@ import java.nio.file.Paths;
 import static java.nio.file.StandardCopyOption.*;
 
 public class CopyCat implements CopyCatIF {
+	private static CopyCat copyCat;
+	
+	
+
+	private CopyCat() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	public static CopyCat getInstance() {
+		if (copyCat == null) {
+			return copyCat = new CopyCat();
+		} else {
+			return copyCat;
+		}
+	}
 
 	@Override
 	public boolean cp(String source, String target) {

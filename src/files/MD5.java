@@ -21,7 +21,7 @@ public class MD5 implements MD5IF {
 		if (md5 != null) {
 			return md5;
 		} else {
-			return new MD5();
+			return md5 = new MD5();
 		}
 	}
 
@@ -30,8 +30,6 @@ public class MD5 implements MD5IF {
 		String checksum = null;
 		
 		if (Files.exists(Paths.get(filename))) {
-			
-			
 			md.update(Files.readAllBytes(Paths.get(filename)));
 			byte[] digest = md.digest();
 			checksum = DatatypeConverter.printHexBinary(digest).toUpperCase();

@@ -1,10 +1,10 @@
 package parser;
 
-import classes.FileSetsController;
-import classes.SetControllerIF;
+import mvc.FileSetsModel;
+import mvc.SetController;
 
 public abstract class TreeNode {
-	FileSetsController fileSetsController;
+	FileSetsModel fileSetsModel;
 	TreeNode left;
 	TreeNode right;
 
@@ -13,5 +13,5 @@ public abstract class TreeNode {
 		right = b;
 	}
 	public abstract String toString();
-	public abstract SetControllerIF eval();
+	public abstract SetController eval();
 }

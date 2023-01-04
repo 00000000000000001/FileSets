@@ -3,6 +3,24 @@ package files;
 import java.security.NoSuchAlgorithmException;
 
 public class Hash implements HashIF {
+	private static Hash hash;
+	
+	
+	
+
+	private Hash() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+	public static Hash getInstance() {
+		if (hash == null) {
+			return hash = new Hash();
+		} else {
+			return hash;
+		}
+	}
 
 	@Override
 	public MD5IF getMd5() throws NoSuchAlgorithmException {

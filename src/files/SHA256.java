@@ -21,7 +21,7 @@ public class SHA256 implements SHA256IF {
 		if (sha256 != null) {
 			return sha256;
 		} else {
-			return new SHA256();
+			return sha256 = new SHA256();
 		}
 	}
 	

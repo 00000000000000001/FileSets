@@ -21,7 +21,7 @@ public class SHA512 implements SHA512IF {
 		if (sha512 != null) {
 			return sha512;
 		} else {
-			return new SHA512();
+			return sha512 = new SHA512();
 		}
 	}
 	

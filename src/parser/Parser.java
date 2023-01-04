@@ -4,7 +4,7 @@ import java.util.regex.Pattern;
 
 public class Parser {
 	String equation;
-	String nextToken;
+	private String nextToken;
 	public TreeNode resultTree;
 	Scanner sc;
 	
@@ -15,24 +15,24 @@ public class Parser {
 
 	public void scanToken() {
 		if (sc.hasNext()) {
-			nextToken = sc.next();
+			setNextToken(sc.next());
 		} else {
-			nextToken = "";
+			setNextToken("");
 		}
 	}
 	
 	public TreeNode parseS() {
 		TreeNode a = parseF();
 		while (true) {
-			if (nextToken.equals("+")) {
+			if (getNextToken().equals("+")) {
 				scanToken();
 				TreeNode b = parseF();
 				a = new Union(a,b);
-			} else if (nextToken.equals("-")) {
+			} else if (getNextToken().equals("-")) {
 				scanToken();
 				TreeNode b = parseF();
 				a = new Subtract(a,b);
-			} else if (nextToken.equals("&")) {
+			} else if (getNextToken().equals("&")) {
 				scanToken();
 				TreeNode b = parseF();
 				a = new Intersect(a,b);
@@ -44,17 +44,17 @@ public class Parser {
 	}
 	
 	TreeNode parseF() {
-		if (Pattern.matches("\\w+", nextToken)) {
-			TreeNode a =  new ID(nextToken);
+		if (Pattern.matches("\\w+", getNextToken())) {
+			TreeNode a =  new ID(getNextToken());
 			scanToken();
 			return a;
-		} else if (nextToken.equals("(")) {
+		} else if (getNextToken().equals("(")) {
 			scanToken();
 			TreeNode a = parseS();
 			if (a == null) {
 				return null;
 			}
-			if (nextToken.equals(")")) {
+			if (getNextToken().equals(")")) {
 				scanToken();
 				return a;
 			} else {
@@ -71,14 +71,22 @@ public class Parser {
 		parser.scanToken();
 		parser.resultTree = parser.parseS();
 		
-		if (parser.nextToken != "") {
-			System.out.println("Input-String fehlerhaft. Enthält: " + parser.nextToken);
+		if (parser.getNextToken() != "") {
+			System.out.println("Input-String fehlerhaft. Enthält: " + parser.getNextToken());
 		}
 		
 		System.out.println(parser.resultTree.toString());
 		
 		System.out.println(parser.resultTree.eval());
 		
+	}
+
+	public String getNextToken() {
+		return nextToken;
+	}
+
+	public void setNextToken(String nextToken) {
+		this.nextToken = nextToken;
 	}
 	
 }
