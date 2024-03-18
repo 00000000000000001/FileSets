@@ -36,7 +36,6 @@ public class Hash implements HashIF {
 	public SHA512 getSha512() throws NoSuchAlgorithmException {
 		return SHA512.getInstance();
 	}
-
 	
 	
 }

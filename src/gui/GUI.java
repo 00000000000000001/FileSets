@@ -49,7 +49,7 @@ public class GUI extends JFrame {
 	private static JTextArea result_TextArea;
 	private static JLabel bottom_progessBar;
 
-	private static String exportPath = "./Export";
+//	private static String exportPath = "./Export";
 	
 	
 
@@ -315,7 +315,7 @@ public class GUI extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		gui.getInstance();
+		GUI.getInstance();
 	}
 
 

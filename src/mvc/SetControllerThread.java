@@ -9,7 +9,7 @@ import gui.StatusBars;
 public class SetControllerThread implements Runnable {
 	private SetController setController;
 	private String path;
-	private StatusBars statusBars = StatusBars.getInstance(GUI.getBottom_progessBar());
+//	private StatusBars statusBars = StatusBars.getInstance(GUI.getBottom_progessBar());
 	
 	
 
