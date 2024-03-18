@@ -221,10 +221,13 @@ public class GUI extends JFrame {
         eval_textfield.setToolTipText("<html>Hier können Sie einen logischen Ausdruck eingeben.<br>" +
                 "Mengenbezeichner sind A, B, C etc.<br>" +
                 "Operatoren sind & | - /.<br>" +
-                "Achten Sie darauf, dass A&B nicht funktioniert aber A & B schon.</html>");
+                "Achten Sie darauf, dass A&B nicht funktioniert aber A & B schon.<br>" +
+                "Klammern () sind übrigens auch erlaubt.</html>");
         ceiling_eval.add(eval_textfield, BorderLayout.CENTER);
 
         JButton eval_button = new JButton("evaluate");
+        eval_button.setToolTipText("<html>Wertet die Mengenoperation links im Textfeld aus." +
+                "<br>Da könnte z. B. stehen \"A\" oder \"A & B\"");
         ceiling_eval.add(eval_button, BorderLayout.LINE_END);
         eval_button.addActionListener(new ActionListener() {
 
@@ -254,6 +257,7 @@ public class GUI extends JFrame {
         ceiling_pane.add(new JSeparator(SwingConstants.VERTICAL));
 
         JButton button_export = new JButton("export");
+        button_export.setToolTipText("Ich habe wirklich keine Ahnung was ich mit diesem Button wollte.");
         ceiling_pane.add(button_export);
 
         /*
@@ -265,7 +269,7 @@ public class GUI extends JFrame {
         result_TextArea = new JTextArea();
         result_TextArea.setToolTipText(
                 "<html>Nachdem Sie einen gültigen logischen Ausdruck oben in die Eingabezeile"
-                + "<br>eingegeben haben und evaluate betätigt haben erscheint das Ergebnis der Mengenoperation "
+                        + "<br>eingegeben haben und evaluate betätigt haben erscheint das Ergebnis der Mengenoperation "
                         + "<br>hier in diesem Textfeld.</html>");
         JScrollPane result_ScrollPane = new JScrollPane(result_TextArea);
 
