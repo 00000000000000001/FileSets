@@ -6,8 +6,6 @@ import java.nio.file.Paths;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-import javax.xml.bind.DatatypeConverter;
-
 public class SHA512 implements SHA512IF {
 	private static SHA512 sha512;
 	MessageDigest md;
@@ -34,7 +32,11 @@ public class SHA512 implements SHA512IF {
 			
 			md.update(Files.readAllBytes(Paths.get(filename)));
 			byte[] digest = md.digest();
-			checksum = DatatypeConverter.printHexBinary(digest).toUpperCase();
+            StringBuilder hexString = new StringBuilder();
+            for (int i = 0; i < digest.length; i++) {
+                hexString.append(String.format("%02X", digest[i]));
+            }
+            checksum = hexString.toString();
 			
 		}
 		
