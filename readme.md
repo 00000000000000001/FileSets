@@ -1,8 +1,7 @@
 How it works:
 
-- choose a single file or a directory
-- single files and directories will be treated as a set of files
-- there will be no duplicates in a set
+- choose a directory
+- files in directories will be treated as elements of a set. So there will be no duplicates in a set.
 - you can apply a set expression to your sets
 - operators are: + (union), & (intersect), - (subtract)
 - expression tokens need to be separated by spaces (e.g. "A + B", not 
