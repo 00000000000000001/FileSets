@@ -10,7 +10,10 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import javax.swing.SwingUtilities;
+
 import files.Hash;
+import gui.GUI;
 
 public class SetController {
 	private SetModel setModel;
@@ -36,7 +39,7 @@ public class SetController {
 		Path path = Paths.get(name);
 		if (!Files.isDirectory(path)) { // add single file
 			
-			add(name);
+			calcHashAndAdd(name);
 			
 			
 		} else if (Files.isDirectory(path)) { // add directory
@@ -48,7 +51,7 @@ public class SetController {
 				// add to set
 				pathnames.forEach(file -> {
 					try {
-						add(file);
+						calcHashAndAdd(file);
 					} catch (NoSuchAlgorithmException | IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -88,13 +91,19 @@ public class SetController {
 		
 	}
 	
-	private void add(String filePath) throws NoSuchAlgorithmException, IOException {
+    private void increaseProgress() {
+        SwingUtilities.invokeLater(() -> {
+            int n = GUI.getInstance().getProgressBar().getValue();
+            GUI.getInstance().getProgressBar().setValue(n + 1);
+        });
+    }
+	
+	private void calcHashAndAdd(String filePath) throws NoSuchAlgorithmException, IOException {
 		
 		
 		Map<String, String> dict = setModel.getDict();
 		// needs to be checked, if exists
 		Path path = Paths.get(filePath);
-//		File file = new File(filePath);
 
 		if (Files.exists(path)/* && file.canRead()*/) {
 			// Check if file already exists
@@ -110,6 +119,9 @@ public class SetController {
 				setModel.setDict(dict);
 			}
 		}
+		
+		// increase progressbar
+        increaseProgress();
 		
 		
 	}

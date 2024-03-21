@@ -23,6 +23,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JProgressBar;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JSplitPane;
@@ -48,9 +49,13 @@ public class GUI extends JFrame {
     private static JTabbedPane tabbedPane;
     private static JTextField eval_textfield;
     private static JTextArea result_TextArea;
-    private static JLabel bottom_progessBar;
+    private JProgressBar progressBar;
 
 //	private static String exportPath = "./Export";
+
+    public JProgressBar getProgressBar() {
+        return progressBar;
+    }
 
     /** Returns an ImageIcon, or null if the path was invalid. */
     protected ImageIcon createImageIcon(String path, String description) {
@@ -254,11 +259,11 @@ public class GUI extends JFrame {
 
         });
 
-        ceiling_pane.add(new JSeparator(SwingConstants.VERTICAL));
-
-        JButton button_export = new JButton("export");
-        button_export.setToolTipText("Ich habe wirklich keine Ahnung was ich mit diesem Button wollte.");
-        ceiling_pane.add(button_export);
+//        ceiling_pane.add(new JSeparator(SwingConstants.VERTICAL));
+//
+//        JButton button_export = new JButton("export");
+//        button_export.setToolTipText("Ich habe wirklich keine Ahnung was ich mit diesem Button wollte.");
+//        ceiling_pane.add(button_export);
 
         /*
          * Center part
@@ -268,7 +273,7 @@ public class GUI extends JFrame {
 
         result_TextArea = new JTextArea();
         result_TextArea.setToolTipText(
-                "<html>Nachdem Sie einen gültigen logischen Ausdruck oben in die Eingabezeile"
+                "<html>Nachdem Sie eine gültige Mengenoperation oben in die Eingabezeile"
                         + "<br>eingegeben haben und evaluate betätigt haben erscheint das Ergebnis der Mengenoperation "
                         + "<br>hier in diesem Textfeld.</html>");
         JScrollPane result_ScrollPane = new JScrollPane(result_TextArea);
@@ -284,9 +289,16 @@ public class GUI extends JFrame {
          */
         JPanel bottom = new JPanel(new java.awt.GridLayout(0, 1));
         pane.add(bottom, BorderLayout.PAGE_END);
+        
+        progressBar = new JProgressBar();
+        // Einstellen des minimalen und maximalen Wertes des Ladebalkens
+        progressBar.setMinimum(0);
+        progressBar.setMaximum(0);
 
-        bottom_progessBar = new JLabel("");
-        bottom.add(bottom_progessBar);
+        // Optional: Text auf dem Ladebalken anzeigen
+        progressBar.setStringPainted(true);
+        
+        bottom.add(progressBar);
 
         /*
          * 	
@@ -299,14 +311,6 @@ public class GUI extends JFrame {
 
         // Wir lassen unseren Frame anzeigen
         this.setVisible(true);
-    }
-
-    public static JLabel getBottom_progessBar() {
-        return bottom_progessBar;
-    }
-
-    public static void setBottom_progessBar(JLabel bottom_progessBar) {
-        GUI.bottom_progessBar = bottom_progessBar;
     }
 
     public static GUI getInstance() {
